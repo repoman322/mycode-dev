@@ -21,7 +21,7 @@ def main():
     with open("myYAML.yml.updated", "w") as myf:
     ## use the YAML library
     ## USAGE: yaml.dump(input data, file like object)
-        yaml.dump(pyyammy, myf)
+        yaml.dump(pyyammy, myf, default_flow_style=False)
 
 if __name__ == "__main__":
     main()
