@@ -6,7 +6,7 @@ fruitcompanies= [{"name":"Zesty","employees":["Ambu","Brent", "Bryan","Carlee","
 def mycompany(coname):
   n = 0
   for i in fruitcompanies:
-    print(f"check for coname {coname} in {i}")
+    #print(f"check for coname {coname} in {i}")
     if coname in i['name']:
       print(f"coname {coname} found at {n}")
       break
@@ -32,4 +32,5 @@ def main():
     mycompany('JuiceGrove')
     choose_co()
 
-main()
+if __name__ == "__main__":
+    main()
