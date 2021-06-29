@@ -17,8 +17,11 @@ def main():
     
     ## Decode the response
     got_dj = gotresp.json()
-    pprint.pprint(got_dj)
-    
+    print(f" You selected: {got_dj['name']}")
+    for alias in got_dj['aliases']:
+        if alias != '':
+            print(f"...AKA {alias}")
+
     try:
         gethouse = got_dj["allegiances"]
         for h in gethouse:
