@@ -17,7 +17,11 @@ def main():
     
     ## Decode the response
     got_dj = gotresp.json()
-    print(f" You selected: {got_dj['name']}")
+    if got_dj['name'] == "":
+        print(f" You selected: character {got_charToLookup}")
+    else:
+        print(f" You selected: {got_dj['name']}")
+
     for alias in got_dj['aliases']:
         if alias != '':
             print(f"...AKA {alias}")
