@@ -66,13 +66,16 @@ def main():
     print(js)
     valid_j(js)
 
-    for h in hosts:
-        print(h)
-
-    js2 = {"json": {"time": str(rightnow), "ip": str(myip), "mysrvs": hosts}}
+    js2 = {"json": {"time": rightnow, "ip": myip, "mysrvs": hosts}}
     print(js2)
     valid_j(js2)
-    js3 = json.dumps(js2)
+    js3 = {
+        "json": {
+            "time": rightnow,
+            "ip": myip,
+            "mysrvs": hosts
+            }
+          }
     print(js3)
     valid_j(js3)
 
