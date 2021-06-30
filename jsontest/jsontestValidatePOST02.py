@@ -69,15 +69,15 @@ def main():
     js2 = {"json": {"time": rightnow, "ip": myip, "mysrvs": hosts}}
     print(js2)
     valid_j(js2)
-    js3 = {
-        "json": {
-            "time": rightnow,
-            "ip": myip,
-            "mysrvs": hosts
-            }
-          }
-    print(js3)
-    valid_j(js3)
+
+    jsonToTest = {}
+    jsonToTest["time"] = rightnow
+    jsonToTest["ip"] = myip
+    jsonToTest["mysvrs"] = hosts
+    mydata2 = {}
+    mydata2["json"] = str(jsonToTest)
+    print(mydata2)
+    valid_j(mydata2)
 
 if __name__ == "__main__":
     main()
