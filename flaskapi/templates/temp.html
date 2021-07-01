@@ -1,0 +1,20 @@
+<!doctype html>
+<body>
+<style>
+body {
+  background-color: black;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body>
+
+<h1>Results</h1>
+    {% for i in gr %}
+        <h1>{{ i.ip }} {{ i.fqdn }} # {{ i.hostname }}</h1>
+    {% endfor %}
+     
+</body>
+</html>

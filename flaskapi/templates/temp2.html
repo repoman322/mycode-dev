@@ -1,0 +1,26 @@
+<!doctype html>
+<body>
+<style>
+body {
+  background-color: black;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body>
+
+<h1>Results</h1>
+    {% for i in gr %}
+        <h1>{{ i.ip }} {{ i.fqdn }} # {{ i.hostname }}</h1>
+    {% endfor %}
+
+
+<form action = "/new" method="post">
+    <p><input type="hidden" name="addnew" value="add"></p>
+    <p><input type="submit" value="Add Hosts"></p>
+</form>
+    
+</body>
+</html> 
