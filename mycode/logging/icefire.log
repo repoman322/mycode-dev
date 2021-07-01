@@ -1,0 +1,12 @@
+INFO:07/01/2021 12:51:56 PM Scripting started
+CRITICAL:07/01/2021 12:51:56 PM must be str, not NoneType
+INFO:07/01/2021 12:51:56 PM Program ended
+INFO:07/01/2021 12:53:35 PM Scripting started
+INFO:07/01/2021 12:53:36 PM API Response Code - <Response [200]>
+INFO:07/01/2021 12:53:36 PM Program ended
+INFO:07/01/2021 12:55:53 PM Scripting started
+INFO:07/01/2021 12:55:53 PM API Response Code - <Response [200]>
+INFO:07/01/2021 12:55:53 PM Program ended
+INFO:07/01/2021 01:03:03 PM Scripting started
+CRITICAL:07/01/2021 01:03:03 PM division by zero
+INFO:07/01/2021 01:03:03 PM Program ended
