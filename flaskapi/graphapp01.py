@@ -20,6 +20,18 @@ def sshlogin(ip, un, passw):
     print(days)
     return days
 
+def xsshlogin(ip, un, passw):
+    sshsession = paramiko.SSHClient()    
+    sshsession.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    sshsession.connect(hostname=ip, username=un, password=passw)
+    ssh_stdin, ssh_stdout, ssh_stderr = sshsession.exec_command("uptime")
+    sshruntime = ssh_stdout.read().decode('utf-8').split()
+    frac_day = (((int(sshruntime[4][-3:-1])* 60 ) + (int(sshruntime[4][:2]) * 3600))/ 86400 )
+    days = int(sshruntime[2]) + frac_day
+    print(days)
+    print(f"Command run at: {sshruntime[0]}, Days up: {sshruntime[2]}, Hours:seconds: {sshruntime[4]}")
+    return days
+
 app = Flask(__name__)
 
 @app.route("/graphin")
@@ -30,7 +42,7 @@ def graphin():
     xtick = []
     for cred in creds:
         xtick.append(cred['ip'])
-        resp = sshlogin(cred['ip'], cred['un'], cred['passw'])
+        resp = xsshlogin(cred['ip'], cred['un'], cred['passw'])
         svruptime.append(resp)
     xtick = tuple(xtick) # create a tuple
     svruptime = tuple(svruptime)
