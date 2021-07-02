@@ -38,11 +38,11 @@ def addrec():
             city = data['city']     # student city
             pin = data['pin']       # "pin" assigned to student
                                     # ("pin" is just an example of meta data we want to track)
-
+            print(f"Name {nm} POSTED - {data['nm']}")
             # connect to sqliteDB
             with sql.connect("database.db") as con:
                 cur = con.cursor()
-                print(type(con))
+                print(type(cur))
                 # place the info from our form into the sqliteDB
                 cur.execute("INSERT INTO students (name,addr,city,pin) VALUES (?,?,?,?)",(nm,addr,city,pin) )
                 # commit the transaction to our sqliteDB
@@ -69,9 +69,13 @@ def list_students():
     cur.execute("SELECT * from students")           # pull all information from the table "students"
 
     rows = cur.fetchall()
-
-    jsondata = rows
+    r = [dict((cur.description[i][0], value) \
+               for i, value in enumerate(row)) for row in rows]
+    print(r)
+    jsondata = r
+    #print(jsondata)
     return jsonify(jsondata)
+    #return jsondata
     #return render_template("list.html",rows = rows) # return all of the sqliteDB info as HTML
 
 if __name__ == '__main__':
