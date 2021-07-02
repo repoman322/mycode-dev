@@ -7,7 +7,7 @@ via Flask APIs"""
 import sqlite3 as sql
 
 # python3 -m pip install flask
-from flask import Flask
+from flask import Flask, redirect, url_for
 from flask import render_template
 from flask import request
 from flask import jsonify
@@ -20,7 +20,8 @@ jsondata= []
 @app.route('/')
 def home():
     #return render_template('home.html')
-    return jsonify(jsondata)
+    #return jsonify(jsondata)
+    return redirect(url_for("list_students"))
 
 # if someone uses student.html it will generate a POST
 # this post will be sent to /addrec
@@ -47,7 +48,7 @@ def addrec():
                 # commit the transaction to our sqliteDB
                 con.commit()
             # if we have made it this far, the record was successfully added to the DB
-            msg = "Record successfully added"
+            print("Record successfully added")
 
     except:
     #    con.rollback()  # this is the opposite of a commit()
