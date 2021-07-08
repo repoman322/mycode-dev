@@ -69,13 +69,11 @@ def list_students():
     cur.execute("SELECT * from students")           # pull all information from the table "students"
 
     rows = cur.fetchall()
-    r = [dict((cur.description[i][0], value) \
+    jsondata = [dict((cur.description[i][0], value) \
                for i, value in enumerate(row)) for row in rows]
-    print(r)
-    jsondata = r
-    #print(jsondata)
+    
+    print(jsondata)
     return jsonify(jsondata)
-    #return jsondata
     #return render_template("list.html",rows = rows) # return all of the sqliteDB info as HTML
 
 if __name__ == '__main__':

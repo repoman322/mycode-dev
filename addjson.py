@@ -4,9 +4,9 @@ import requests
 import json
 
 data = {
-    "nm" : "Wade Wilson",
-    "addr" : "Planet Earth",
-    "city" : "Beantown",
+    "nm" : "Wiskey Wade Wilson",
+    "addr" : "Planet Mars",
+    "city" : "Paradise",
     "pin" : "5555",
 }
 
