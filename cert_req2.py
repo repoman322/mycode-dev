@@ -24,19 +24,22 @@ def got_details(got_js):
   got_details = []
   url = f"'url': '{got_js['url']}'"
   got_details.append(url)
+  aliases = []
   if got_js['aliases'][0] != '':
-    alias = f"'alias': {got_js['aliases'][0]}'"
-    print(f"...AKA {got_js['aliases'][0]}")
-    got_details.append(alias)
+    for a in got_js['aliases']:
+      print(f"...AKA {a}")
+      aliases.append(a)
   elif got_js['titles'][0] != '':
-    print(f"...AKA {got_js['titles'][0]}")
-    alias = f"'alias': '{got_js['titles'][0]}'"
-    got_details.append(alias) 
+    for a in got_js['titles']:
+      print(f"...AKA {a}")
+      aliases.append(a)
   else:
-    alias = "'alias': 'None'"
+    aliases.append('None')
     print(f"...Alias and Title not found")
-    got_details.append(alias)
     
+  alias = f"'alias': '{aliases}'"
+  got_details.append(alias)
+  
   if got_js['name'] == "":
     gotchar = got_js['url'][-3:]
     gotchar = re.sub('[!@#$/]', '', gotchar)
@@ -62,31 +65,31 @@ def got_details(got_js):
       houses.append(got_hs['name'])
     house = f"'house': '{houses}'"
     got_details.append(house)
-          
+
   return got_details
 
-## pull names form web and save them to a file for future use
+## pull names from web and save them to a file for future use
 def main():
   my_json = []
   got_list = []
   ## Ask user for input
   got_charCount = input("Pick a number of GoT characters to return info on: " )
-    
+
   for n in range(1,int(got_charCount)+1):
     ## Send HTTPS GET to the API of ICE and Fire character resource
     got_lookup(my_json)
-       
+
   for got_js in my_json:
     got_list.append(got_details(got_js))
-      
+
   print(got_list)  # good json data   
   with open("test.json", 'w') as fout:
     json.dump(got_list, fout)
 
   for name in got_list:
-    print(name[2])
+    print(name[3])
     #for i in name:
     #  print(i)
-
+    
 if __name__ == "__main__":
     main()
